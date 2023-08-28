@@ -1,10 +1,20 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
+import {Routes, Route, useNavigate} from 'react-router-dom'
+import MovieList from "./MovieList";
+
 
 function MovieDetails(){
     const { id } = useParams();
+    const navigate=useNavigate();
+
+    const navigateToHome = () => {
+        navigate('/main');
+      };
+
     return(
         <section>
+
         <div>
             <h2>ID:{id}</h2>
         </div>
@@ -31,6 +41,12 @@ function MovieDetails(){
         </div>
 
 
+        <button onClick={navigateToHome}><p>Go back</p></button>
+
+
+        <Routes>
+          <Route path="/main" element={MovieList} />
+        </Routes>
 
         </section>
     
